@@ -25,7 +25,7 @@ client.on('ready', () => {
     setInterval(function() {
         (async function () {
             const puppeteer = require('puppeteer');
-            puppeteer.launch({ headless: true, args: ['--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36"'] }).then(async browser => {
+            puppeteer.launch({ignoreDefaultArgs: ['--disable-extensions']}).then(async browser => {
                 const page = await browser.newPage();
                 await page.goto("https://www.binance.com/en/support/announcement/c-93?navId=93/");
                 await page.waitForSelector('body');
