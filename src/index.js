@@ -19,13 +19,15 @@ client.commands = new Map();
 client.login(process.env.BOT_TOKEN);
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in.`);
-    var channel = client.channels.cache.get('831179480944738315');
+    var channel = client.channels.cache.get('831515136778698792');
     var postLink = [];
     var checkminutes = 1, checkthe_interval = checkminutes * 20 * 500; //This checks every 10 minutes, change 10 to whatever minute you'd like
     setInterval(function() {
         (async function () {
             const puppeteer = require('puppeteer');
-            puppeteer.launch({ignoreDefaultArgs: ['--disable-extensions']}).then(async browser => {
+            puppeteer.launch({
+                headless: true,
+                args: ['--no-sandbox'] }).then(async browser => {
                 const page = await browser.newPage();
                 await page.goto("https://www.binance.com/en/support/announcement/c-93?navId=93/");
                 await page.waitForSelector('body');
